@@ -87,13 +87,23 @@ class Book {
   
     saveBooks() {
       localStorage.setItem('books', JSON.stringify(this.books));
+      this.syncBooks();
     }
   
     loadBooks() {
       const booksJSON = localStorage.getItem('books');
       return booksJSON ? JSON.parse(booksJSON) : [];
     }
+
+    syncBooks() {
+      const event = new Event('storage');
+      window.dispatchEvent(event);
+    }
   }
+  window.addEventListener('storage', () => {
+    const bookList = new BookList();
+    bookList.displayBooks();
+  });
   
   document.addEventListener('DOMContentLoaded', () => {
     const bookList = new BookList();
