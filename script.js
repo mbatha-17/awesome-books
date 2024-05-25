@@ -74,8 +74,10 @@ class Book {
       bookList.innerHTML = '';
       this.books.forEach((book, index) => {
         const li = document.createElement('li');
+        li.className = 'book-item';
         li.textContent = `${book.title} by ${book.author}`;
         const removeButton = document.createElement('button');
+        removeButton.className = 'remove-button';
         removeButton.textContent = 'Remove';
         removeButton.addEventListener('click', () => {
           this.removeBook(index);
@@ -87,7 +89,7 @@ class Book {
   
     saveBooks() {
       localStorage.setItem('books', JSON.stringify(this.books));
-      this.syncBooks();
+      // this.syncBooks();
     }
   
     loadBooks() {
@@ -95,16 +97,19 @@ class Book {
       return booksJSON ? JSON.parse(booksJSON) : [];
     }
 
-    syncBooks() {
-      const event = new Event('storage');
-      window.dispatchEvent(event);
-    }
+    // syncBooks() {
+    //   const event = new Event('storage');
+    //   window.dispatchEvent(event);
+    // }
   }
-  window.addEventListener('storage', () => {
+  
+  window.addEventListener('storage', (event) => {
+    if (event.key === 'books') {
     const bookList = new BookList();
     bookList.displayBooks();
+    }
   });
-  
+
   document.addEventListener('DOMContentLoaded', () => {
     const bookList = new BookList();
     

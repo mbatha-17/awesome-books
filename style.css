@@ -28,11 +28,11 @@ h1{
     text-align: center;
 }
 
-.container{
+#books{
     border: 2px solid black;
 }
 
-.cont{
+.book-item{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -40,7 +40,7 @@ h1{
     border: 1px solid #ccc;
 }
 
-button{
+.remove-button{
     padding: 5px 10px;
     border: 2px solid black;
 }
