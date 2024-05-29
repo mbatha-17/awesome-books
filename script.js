@@ -71,6 +71,11 @@ class Book {
   
     displayBooks() {
       const bookList = document.getElementById('books');
+      if (!bookList) {
+        console.error('Element with id "books" not found.');
+        return;
+    }
+
       bookList.innerHTML = '';
       this.books.forEach((book, index) => {
         const li = document.createElement('li');
@@ -89,36 +94,32 @@ class Book {
   
     saveBooks() {
       localStorage.setItem('books', JSON.stringify(this.books));
-      // this.syncBooks();
     }
   
     loadBooks() {
       const booksJSON = localStorage.getItem('books');
       return booksJSON ? JSON.parse(booksJSON) : [];
     }
-
-    // syncBooks() {
-    //   const event = new Event('storage');
-    //   window.dispatchEvent(event);
-    // }
   }
   
-  window.addEventListener('storage', (event) => {
-    if (event.key === 'books') {
-    const bookList = new BookList();
-    bookList.displayBooks();
-    }
-  });
-
   document.addEventListener('DOMContentLoaded', () => {
+    console.log('DOM fully loaded and parsed');
     const bookList = new BookList();
     
     document.getElementById('book-form').addEventListener('submit', (e) => {
       e.preventDefault();
       const title = document.getElementById('text').value;
       const author = document.getElementById('author').value;
+      console.log('Form submitted:', { title, author });
       bookList.addBook(title, author);
       e.target.reset();
     });
+  });
+
+  window.addEventListener('storage', (event) => {
+    if (event.key === 'books') {
+    const bookList = new BookList();
+    bookList.displayBooks();
+    }
   });
   

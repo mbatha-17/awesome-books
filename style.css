@@ -28,6 +28,10 @@ h1{
     text-align: center;
 }
 
+.hide{
+    display: none;
+}
+
 #books{
     border: 2px solid black;
 }
