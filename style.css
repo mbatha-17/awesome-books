@@ -1,0 +1,80 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    margin: 10px;
+}
+header{
+    border: 2px solid black;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+nav a{
+    text-decoration: none;
+    margin: 0 50px;
+    color: black;
+}
+
+h4{
+    text-align: end;
+}
+
+h1{
+    text-align: center;
+}
+
+.hide{
+    display: none;
+}
+
+#books{
+    border: 2px solid black;
+}
+
+.book-item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+.remove-button{
+    padding: 5px 10px;
+    border: 2px solid black;
+}
+
+footer{
+    border: 2px solid black;
+    margin-top: 10px;
+    padding: 10px;
+    font-weight: 500;
+    font-size: 22px;
+}
+
+#book-form{
+    text-align: center;
+}
+
+#text{
+    border: 2px solid black;
+    margin: 10px;
+}
+
+#author{
+    border: 2px solid black;
+}
+
+#add{
+    padding: 5px 15px;
+    margin: 10px;
+}
+
+.section{
+    text-align: center;
+}
